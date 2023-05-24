@@ -1,7 +1,6 @@
 import axios from "../axios";
 import { useEffect, useState } from "react";
-
-const ApiUrl = "https://fakestoreapi.com";
+import BasicTable from "./Molucules/Table";
 export default function Home() {
   const [myData, setMyData] = useState([]);
   const [isError, setIsError] = useState("");
@@ -12,23 +11,24 @@ export default function Home() {
   //     .catch((error) => setIsError(error.message));
   // }, []);
 
-  const getAllProducts = async function (url) {
+  const getAllProducts = async function () {
     try {
       const res = await axios.get(`/products`);
       setMyData(res.data);
+      console.log(myData);
     } catch (error) {
       setIsError(error.message);
     }
   };
 
   useEffect(() => {
-    getAllProducts(ApiUrl);
+    getAllProducts();
   }, []);
 
   return (
     <>
       {isError != "" && <h2>{isError}</h2>}
-      {myData.map((post) => {
+      {/* {myData.map((post) => {
         const { id, title, price, description, category, image } = post;
         return (
           <div className="card" key={id}>
@@ -39,7 +39,8 @@ export default function Home() {
             <img src={image} />
           </div>
         );
-      })}
+      })} */}
+      <BasicTable data={myData} />
     </>
   );
 }
