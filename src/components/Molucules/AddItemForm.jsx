@@ -5,7 +5,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 // import OutlinedInput from "@mui/material/OutlinedInput";
 import { useFormik } from "formik";
 import * as yup from "yup";
-import Typography from "@mui/material";
+import { Typography } from "@mui/material";
 import { Button } from "@mui/material";
 export default function AddItemForm({ onSubmitHandler, type }) {
   // const validationSchema = yup.object({

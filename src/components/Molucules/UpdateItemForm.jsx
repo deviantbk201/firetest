@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import axios from "../../axios";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
-import Typography from "@mui/material";
+import { Typography } from "@mui/material";
 // import OutlinedInput from "@mui/material/OutlinedInput";
 import { useFormik } from "formik";
 import * as yup from "yup";
