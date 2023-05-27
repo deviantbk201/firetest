@@ -6,7 +6,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { Button } from "@mui/material";
-export default function AddItemForm({ onSubmitHandler, type }) {
+export default function UpdateItemForm({ onSubmitHandler, initialData }) {
   // const validationSchema = yup.object({
   //   title: yup
   //     .string("enter your data")
@@ -34,18 +34,20 @@ export default function AddItemForm({ onSubmitHandler, type }) {
 
   const formik = useFormik({
     initialValues: {
-      price: "12",
-      title: "Paratha",
-      category: "fOOD",
-      description: "Classic indian cuisine dish",
-      imgUrl:
-        "https://images.pexels.com/photos/1146760/pexels-photo-1146760.jpeg",
+      productId: "",
+      price: "",
+      title: "",
+      category: "",
+      description: "",
+      imgUrl: "",
     },
     // validationSchema: validationSchema,
     onSubmit: async (values) => {
       alert(JSON.stringify(values, null, 2));
-      const res = await axios.post("/products", values);
-      onSubmitHandler(res);
+      const res = await axios.patch(`/products/${values.productId}`, values);
+      console.log("Res", res);
+      const updatedProduct = res.data;
+      onSubmitHandler(updatedProduct);
     },
   });
 
@@ -58,6 +60,17 @@ export default function AddItemForm({ onSubmitHandler, type }) {
     >
       <form onSubmit={formik.handleSubmit}>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+          <TextField
+            id="outlined-basic"
+            name="productId"
+            label="productId"
+            variant="outlined"
+            value={formik.values.productId}
+            onChange={formik.handleChange}
+            error={formik.touched.productId && Boolean(formik.errors.producrId)}
+            helperText={formik.touched.productId && formik.errors.productId}
+          />
+
           <TextField
             id="outlined-basic"
             name="title"

@@ -3,6 +3,7 @@ import { signInWithPopup } from "firebase/auth";
 function SignIn() {
   const handleClick = function () {
     signInWithPopup(auth, provider);
+    console.log(auth, provider);
   };
   return (
     <>

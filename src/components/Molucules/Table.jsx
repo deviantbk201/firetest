@@ -8,6 +8,11 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Avatar } from "@mui/material";
 
+// ==========================================================================================================\
+// ============================================================================================
+
+// =================================================================================>
+
 export default function BasicTable({ data }) {
   return (
     <TableContainer component={Paper} sx={{ height: "80vh" }}>
@@ -36,7 +41,9 @@ export default function BasicTable({ data }) {
               <TableCell align="left">{row.category}</TableCell>
               <TableCell align="left">{row.description}</TableCell>
               <TableCell align="right">{row.price}</TableCell>
-              <TableCell align="right">{row.rating.rate}</TableCell>
+              <TableCell align="right">
+                {row.rating ? row.rating.rate : "none"}
+              </TableCell>
               <TableCell align="right">
                 <Avatar
                   sx={{

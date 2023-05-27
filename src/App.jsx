@@ -4,10 +4,13 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import SignIn from "./components/googleSignIn/SignIn";
 import Home from "./components/Home";
 import { signOut } from "firebase/auth";
-import Profile from "./components/Molucules/Profile";
 import { useEffect, useState } from "react";
+import BasicAppBar from "./components/Molucules/BasicAppBar";
+import { Avatar, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 function App() {
-  const [currentUser, setCurrentUSer] = useState("");
+  // const [currentUser, setCurrentUSer] = useState(
+  // );
 
   const [user] = useAuthState(auth);
   // useEffect(() => {
@@ -22,10 +25,16 @@ function App() {
     <>
       <header className="App-header">
         {user ? (
-          <div>
-            <h1>Current User: {user.displayName}</h1>
-            <button onClick={logout}>Log out</button>
-          </div>
+          <BasicAppBar>
+            <Avatar src={user.photoURL} alt="pfp" width={10} height={10} />
+
+            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              {user.displayName}
+            </Typography>
+            <Button color="inherit" onClick={logout}>
+              Log out
+            </Button>
+          </BasicAppBar>
         ) : (
           <SignIn />
         )}
