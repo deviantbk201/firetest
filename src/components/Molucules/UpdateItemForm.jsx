@@ -2,6 +2,7 @@ import Box from "@mui/material/Box";
 import axios from "../../axios";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
+import Typography from "@mui/material";
 // import OutlinedInput from "@mui/material/OutlinedInput";
 import { useFormik } from "formik";
 import * as yup from "yup";
@@ -58,6 +59,7 @@ export default function UpdateItemForm({ onSubmitHandler, initialData }) {
         p: 6,
       }}
     >
+      <Typography variant="h5">Update Item form</Typography>
       <form onSubmit={formik.handleSubmit}>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
           <TextField

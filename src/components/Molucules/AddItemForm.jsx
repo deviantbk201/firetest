@@ -5,6 +5,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 // import OutlinedInput from "@mui/material/OutlinedInput";
 import { useFormik } from "formik";
 import * as yup from "yup";
+import Typography from "@mui/material";
 import { Button } from "@mui/material";
 export default function AddItemForm({ onSubmitHandler, type }) {
   // const validationSchema = yup.object({
@@ -56,6 +57,8 @@ export default function AddItemForm({ onSubmitHandler, type }) {
         p: 6,
       }}
     >
+      <Typography variant="h5">Add Item form</Typography>
+
       <form onSubmit={formik.handleSubmit}>
         <Box sx={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
           <TextField
